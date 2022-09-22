@@ -10,7 +10,7 @@ END ELSE BEGIN
 	OUTER_TEXT_SPRINT arbg ~ar~
 END
 
-ACTION_IF (MOD_IS_INSTALLED ~EEex.tp2~ ~0~) AND NOT FILE_EXISTS_IN_GAME ~M_MESTR1.lua~ BEGIN
+ACTION_IF ((MOD_IS_INSTALLED ~EEex.tp2~ ~0~) AND !(FILE_EXISTS ~data/PATCH26.BIF~)) AND NOT FILE_EXISTS_IN_GAME ~M_MESTR1.lua~ BEGIN
 	COPY ~MESpells/lua~ ~override~
 END
 
@@ -2302,6 +2302,7 @@ COPY_EXISTING ~sppr106.spl~ ~override~
 	SAY UNIDENTIFIED_DESC @11061
 
 BEGIN @23 REQUIRE_COMPONENT ~EEex.tp2~ ~0~ @1002 /*FORBID_COMPONENT ~HighPower.tp2~ ~0~ @1004 FORBID_COMPONENT ~BetterHOF.TP2~ ~0~ @1005 */DESIGNATED 12091
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ AND !(FILE_EXISTS ~data/PATCH26.BIF~)) ~Game not supported.~
 
 ACTION_IF !(FILE_EXISTS_IN_GAME ~M__MEFUN.LUA~) BEGIN
 	COPY ~MESpells/lua~ ~override~
@@ -2814,7 +2815,7 @@ COPY_EXISTING ~scrl1q.itm~ ~override~
 	IF_EXISTS
 
 BEGIN @45 FORBID_COMPONENT ~HighPower.tp2~ ~0~ @1004 REQUIRE_COMPONENT ~EEex.tp2~ ~0~ @1002 DESIGNATED 21231
-
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ AND !(FILE_EXISTS ~data/PATCH26.BIF~)) ~Game not supported.~
 COPY_EXISTING ~spwi123.spl~ ~override~
 	LPF ADD_SPELL_EFFECT INT_VAR opcode=401 target=1 timing=9 parameter1=1 parameter2=1 special=999 STR_VAR resource=~MEFAMILT~ END
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point=0 opcode=removeeffectsbyresource target=1 timing=9 STR_VAR resource=~SPWI123~ END
@@ -2836,7 +2837,7 @@ COPY_EXISTING ~sppr309.spl~ ~override~
 	SAY UNIDENTIFIED_DESC @13091
 	LPF MATCH_SPELL_REVISIONS_DESCRIPTION_FORMAT END
 
-ACTION_IF MOD_IS_INSTALLED ~EEex.tp2~ ~0~ BEGIN
+ACTION_IF ((MOD_IS_INSTALLED ~EEex.tp2~ ~0~) AND !(FILE_EXISTS ~data/PATCH26.BIF~)) BEGIN
 
 	COPY_EXISTING ~eeex_ini.lua~ ~override~
 		REPLACE_TEXTUALLY ~\[\"B3_Invis\"\] = false~ ~["B3_Invis"] = true~
@@ -2969,7 +2970,7 @@ COPY_EXISTING ~spwi404.spl~ ~override~
 	SAY UNIDENTIFIED_DESC @24042
 
 BEGIN @38 REQUIRE_COMPONENT ~EEex.tp2~ ~0~ @1002 DESIGNATED 24081
-
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ AND !(FILE_EXISTS ~data/PATCH26.BIF~)) ~Game not supported.~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~M__MEFUN.LUA~) BEGIN
 	COPY ~MESpells/lua~ ~override~
 END
@@ -3111,7 +3112,7 @@ COPY_EXISTING ~spwi503.spl~ ~override~
 	END
 
 BEGIN @31 REQUIRE_COMPONENT ~EEex.tp2~ ~0~ @1002 FORBID_COMPONENT ~HighPower.tp2~ ~0~ @1004 DESIGNATED 25151
-
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ AND FILE_EXISTS ~data/PATCH26.BIF~) ~Game not supported.~
 COPY ~MESpells/New_Oracle~ ~override~
 
 	ACTION_IF !(FILE_EXISTS_IN_GAME ~M__MEFUN.LUA~) BEGIN
@@ -3206,7 +3207,7 @@ COPY_EXISTING ~spwi615.spl~ ~override~
 	SAY NAME1 @4028
 	SAY UNIDENTIFIED_DESC @26151
 
-ACTION_IF NOT MOD_IS_INSTALLED ~EEex.tp2~ ~0~ BEGIN
+ACTION_IF NOT ((MOD_IS_INSTALLED ~EEex.tp2~ ~0~) AND !(FILE_EXISTS ~data/PATCH26.BIF~))  BEGIN
 	COPY_EXISTING ~spwi615.spl~ ~override~
 		LPF ADD_SPELL_EFFECT INT_VAR insert_point=0 opcode=applyeffectslist target=4 timing=1 duration=6 parameter2=52 STR_VAR resource=~MECHALIP~ END
 
@@ -3215,7 +3216,7 @@ ACTION_IF NOT MOD_IS_INSTALLED ~EEex.tp2~ ~0~ BEGIN
 
 END
 
-ACTION_IF MOD_IS_INSTALLED ~EEex.tp2~ ~0~ BEGIN
+ACTION_IF ((MOD_IS_INSTALLED ~EEex.tp2~ ~0~) AND !(FILE_EXISTS ~data/PATCH26.BIF~)) BEGIN
 
 	ACTION_IF !(FILE_EXISTS_IN_GAME ~M__MEFUN.LUA~) BEGIN
 		COPY ~MESpells/lua~ ~override~
@@ -3267,7 +3268,7 @@ COPY_EXISTING ~spwi615.spl~ ~override~
 	LPF MATCH_SPELL_REVISIONS_DESCRIPTION_FORMAT STR_VAR new_savingthrow= EVAL ~%stringsavingthrowspellhalf%~ END
 
 BEGIN @57 FORBID_COMPONENT ~HighPower.tp2~ ~0~ @1004 FORBID_COMPONENT ~BetterHOF.TP2~ ~768~ @1005 DESIGNATED 27121
-
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ AND FILE_EXISTS ~data/PATCH26.BIF~) ~Game not supported.~
 COPY_EXISTING ~spwi712.spl~ ~override~
 	LPF ADD_SPELL_CFEFFECT INT_VAR insert_point=0 opcode=eeexinvokelua target=1 timing=3 special=15 STR_VAR resource=~MEINHOST~ END
 	READ_SHORT 0x68 numheaders
@@ -3287,7 +3288,7 @@ COPY ~MESpells/New_Meteor_Swarm~ ~override~
 
 ADD_PROJECTILE ~override/mecomsml.pro~
 
-ACTION_IF MOD_IS_INSTALLED ~EEex.tp2~ ~0~ BEGIN
+ACTION_IF ((MOD_IS_INSTALLED ~EEex.tp2~ ~0~) AND !(FILE_EXISTS ~data/PATCH26.BIF~)) BEGIN
 
 	ACTION_IF !(FILE_EXISTS_IN_GAME ~M__MEFUN.LUA~) BEGIN
 		COPY ~MESpells/lua~ ~override~
@@ -3618,7 +3619,7 @@ INCLUDE ~%MOD_FOLDER%/ClassSpellTool.TPA~
 INCLUDE ~MESpells/components/NewSpells.tpa~
 
 BEGIN @43 REQUIRE_COMPONENT ~EEex.tp2~ ~0~ @1002 DESIGNATED 1100
-
+REQUIRE_PREDICATE (GAME_IS ~bgee bg2ee eet iwdee~ AND !(FILE_EXISTS ~data/PATCH26.BIF~)) ~Game not supported.~
 ACTION_IF !(FILE_EXISTS_IN_GAME ~CLABMA01.2DA~) BEGIN
 	COPY ~MESpells/no_overwrite/CLABMA01.2DA~ ~override~
 END
